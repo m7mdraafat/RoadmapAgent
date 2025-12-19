@@ -74,3 +74,6 @@ packages/
 
 # User secrets (if not using UserSecretsId)
 appsettings.Development.json
+
+# Or ignore all csproj files
+*.csproj
