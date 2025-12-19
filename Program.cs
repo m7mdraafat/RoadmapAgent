@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using LetopiaAgent.Configuration;
+using System;
 
 // Build configuration
 var configuration = new ConfigurationBuilder()
@@ -28,4 +29,13 @@ Console.WriteLine($"✅ Configuration loaded successfully");
 Console.WriteLine($"   Model: {settings.ModelId}");
 Console.WriteLine($"   Endpoint: {settings.GitHubModelsEndpoint}");
 
-// TODO: Next step - Initialize the agent with these settings
+var agentService = new RoadmapAgentService(settings);
+var thread = agentService.GetNewThread();
+
+// Streaming usage
+Console.WriteLine("🤖 Letopia Roadmap Agent:");
+
+await foreach (var output in agentService.RunStreamingAsync("Help me create a roadmap for a new AI-powered project management tool.", thread))
+{
+    Console.Write(output);
+}
