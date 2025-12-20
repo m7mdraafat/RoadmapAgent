@@ -62,6 +62,9 @@ obj/
 *.suo
 *.userosscache
 
+# Visual Studio cache/options directory
+.vs/
+
 # NuGet
 *.nupkg
 packages/
