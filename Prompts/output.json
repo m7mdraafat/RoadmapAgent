@@ -1,0 +1,255 @@
+{
+  "title": "Mastering .NET for Cloud Development",
+  "domain": ".NET Cloud Development",
+  "description": "A comprehensive roadmap to enhance your skills in .NET and cloud development with Azure, tailored for those seeking a career in cloud application development.",
+  "targetAudience": "Developers familiar with C# aiming to specialize in .NET Cloud Development for career opportunities.",
+  "prerequisites": ["Basic understanding of C#", "Familiarity with programming concepts", "Basic understanding of web technologies (HTML, HTTP, REST APIs)"],
+  "totalDuration": "4-5 months",
+  "phases": [
+    {
+      "order": 1,
+      "name": ".NET Fundamentals",
+      "duration": "3 weeks",
+      "description": "Understand the fundamentals of .NET, its framework, and applications it is used for.",
+      "topics": [
+        {
+          "order": 1,
+          "name": "Introduction to .NET",
+          "description": "Understand the basics of .NET's components, features, and how it can be used for various applications.",
+          "estimatedTime": "5-7 hours",
+          "resources": [
+            {
+              "title": "Introduction to .NET and its features",
+              "type": "Documentation",
+              "url": "https://learn.microsoft.com/en-us/dotnet/core/introduction",
+              "isFree": true
+            },
+            {
+              "title": "What is .NET? Beginner's Guide",
+              "type": "Video",
+              "url": "https://www.youtube.com/watch?v=6BcPIvVfVAw",
+              "isFree": true
+            },
+            {
+              "title": "Getting Started with .NET",
+              "type": "Course",
+              "url": "https://www.pluralsight.com/courses/dotnet-standard-getting-started",
+              "isFree": false
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Create a Simple Console App",
+          "description": "Build a simple console application in .NET to display user input.",
+          "difficulty": "Beginner",
+          "skills": ["Basic syntax", "Console input/output operations"]
+        },
+        {
+          "name": "Build a Mini Calculator App",
+          "description": "Develop a basic calculator for arithmetic operations.",
+          "difficulty": "Beginner",
+          "skills": ["Decision-making", "Loops", "Arithmetic calculations"]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "Introduction to ASP.NET Core",
+      "duration": "4 weeks",
+      "description": "Learn the basics of web application development using ASP.NET Core.",
+      "topics": [
+        {
+          "order": 1,
+          "name": "Getting Started with ASP.NET Core",
+          "description": "Explore the features of ASP.NET Core and how to use it to build web applications.",
+          "estimatedTime": "8-10 hours",
+          "resources": [
+            {
+              "title": "Introduction to ASP.NET Core",
+              "type": "Documentation",
+              "url": "https://learn.microsoft.com/en-us/aspnet/core/get-started?view=aspnetcore-10.0",
+              "isFree": true
+            },
+            {
+              "title": "ASP.NET Core Beginner Tutorial",
+              "type": "Video",
+              "url": "https://www.youtube.com/playlist?list=PL6n9fhu94yhVkdrusLaQsfERmL_Jh4XmU",
+              "isFree": true
+            },
+            {
+              "title": "ASP.NET Core Full Course",
+              "type": "Course",
+              "url": "https://www.freecodecamp.org/news/learn-aspnet-core-mvc-with-net-9/",
+              "isFree": true
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Build a Personal Portfolio Page",
+          "description": "Develop a portfolio web page using ASP.NET Core, highlighting your skills and projects.",
+          "difficulty": "Beginner",
+          "skills": ["HTML rendering", "Routing with ASP.NET Core"]
+        },
+        {
+          "name": "Create a Blog Application",
+          "description": "Design a blog web application where users can add, edit, and delete posts.",
+          "difficulty": "Intermediate",
+          "skills": ["CRUD operations", "Routing", "MVC architecture"]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Azure Cloud Fundamentals",
+      "duration": "3-4 weeks",
+      "description": "Gain foundational knowledge of Microsoft Azure for deploying and managing cloud applications.",
+      "topics": [
+        {
+          "order": 1,
+          "name": "Azure Fundamentals",
+          "description": "Learn the basics of Azure services and how to set up an account.",
+          "estimatedTime": "6-8 hours",
+          "resources": [
+            {
+              "title": "Learn Azure fundamentals",
+              "type": "Documentation",
+              "url": "https://learn.microsoft.com/en-us/azure/developer/intro/azure-developer-overview",
+              "isFree": true
+            },
+            {
+              "title": "Azure Fundamentals for Beginners",
+              "type": "Video",
+              "url": "https://www.youtube.com/watch?v=G1Zu_8F2Hz0",
+              "isFree": true
+            },
+            {
+              "title": "Microsoft Azure - Beginner's Bootcamp",
+              "type": "Course",
+              "url": "https://www.udemy.com/course/the-ultimate-microsoft-azure-bootcamp/?srsltid=AfmBOorDa4dI1WRae1o-gcKwcqC6MHAWfnDxVY1qCwcUJmndQiofnnHD",
+              "isFree": false
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Deploy a Website on Azure",
+          "description": "Host your website on Azure App Services and configure it.",
+          "difficulty": "Beginner",
+          "skills": ["Azure App Services", "Deployment"]
+        },
+        {
+          "name": "Create Azure Resource Groups",
+          "description": "Organize and manage resources for a sample application using Azure Resource Groups.",
+          "difficulty": "Beginner",
+          "skills": ["Resource management", "Cloud orchestration"]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "REST API Development with ASP.NET Core",
+      "duration": "3-4 weeks",
+      "description": "Learn how to build RESTful APIs using .NET and best practices for scalable systems.",
+      "topics": [
+        {
+          "order": 1,
+          "name": "Building RESTful APIs",
+          "description": "Create and test APIs that adhere to REST principles using ASP.NET Core.",
+          "estimatedTime": "8-10 hours",
+          "resources": [
+            {
+              "title": "Build your first web API with ASP.NET Core",
+              "type": "Documentation",
+              "url": "https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",
+              "isFree": true
+            },
+            {
+              "title": "REST API development with .NET Core",
+              "type": "Video",
+              "url": "https://www.youtube.com/watch?v=38GNKtclDdE",
+              "isFree": true
+            },
+            {
+              "title": "REST APIs with .NET 6 and C#",
+              "type": "Course",
+              "url": "https://www.udemy.com/course/rest-apis-in-aspnet-core/?srsltid=AfmBOornyvdUXz9ou7sPkrS3EyTtvO4hts0VIY7MBFZhxZXWJjzLlKAv",
+              "isFree": false
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Build a Task Management API",
+          "description": "Develop a REST API for managing tasks using GET, POST, PUT, and DELETE.",
+          "difficulty": "Beginner",
+          "skills": ["HTTP methods", "JSON serialization"]
+        },
+        {
+          "name": "E-commerce Backend API",
+          "description": "Create APIs for managing products, customers, and orders for an e-commerce application.",
+          "difficulty": "Intermediate",
+          "skills": ["CRUD operations", "Authentication and security"]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "name": "Serverless Development with Azure",
+      "duration": "3-4 weeks",
+      "description": "Learn to create scalable and cost-efficient serverless applications using Azure Functions.",
+      "topics": [
+        {
+          "order": 1,
+          "name": "Introduction to Azure Functions",
+          "description": "Dive into serverless development with Azure Functions.",
+          "estimatedTime": "6-8 hours",
+          "resources": [
+            {
+              "title": "Introduction to Azure Functions",
+              "type": "Documentation",
+              "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-get-started",
+              "isFree": true
+            },
+            {
+              "title": "Getting Started with Azure Functions",
+              "type": "Video",
+              "url": "https://www.youtube.com/watch?v=Vxf-rOEO1q4",
+              "isFree": true
+            },
+            {
+              "title": "Developing Serverless Solutions with Azure",
+              "type": "Course",
+              "url": "https://www.pluralsight.com/courses/introduction-to-serverless-with-azure-functions",
+              "isFree": false
+            }
+          ]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Weather Data Processing Function",
+          "description": "Create an Azure Function to fetch and process weather data.",
+          "difficulty": "Intermediate",
+          "skills": ["Event-driven programming", "Serverless deployment"]
+        },
+        {
+          "name": "Image Processing Function",
+          "description": "Build an Azure Function to process and resize uploaded images.",
+          "difficulty": "Intermediate",
+          "skills": ["Blob storage integration", "Image manipulation"]
+        }
+      ]
+    }
+  ],
+  "nextSteps": [
+    "Explore microservices development with .NET and Docker",
+    "Learn advanced Azure services like Azure Kubernetes Services (AKS)",
+    "Gain proficiency with DevOps by integrating Azure DevOps or GitHub Actions"
+  ]
+}

@@ -27,6 +27,9 @@ if (string.IsNullOrEmpty(settings.GitHubToken))
     return;
 }
 
+// Initialize OpenTelemetry tracing (exports to AI Toolkit at localhost:4318)
+TracingConfiguration.Initialize();
+
 // Display welcome banner
 PrintWelcomeBanner();
 
@@ -107,6 +110,11 @@ catch (Exception ex)
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine($"Fatal Error: {ex.Message}");
     Console.ResetColor();
+}
+finally
+{
+    // Shutdown tracing and flush pending traces
+    TracingConfiguration.Shutdown();
 }
 
 // Helper methods

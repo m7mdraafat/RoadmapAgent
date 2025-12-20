@@ -1,4 +1,5 @@
 using System.ClientModel;
+using System.Diagnostics;
 using Microsoft.Extensions.AI;
 using Microsoft.Agents.AI;
 using OpenAI;
@@ -64,10 +65,21 @@ public class RoadmapAgentService
     /// </summary>
     public async IAsyncEnumerable<string> RunStreamingAsync(string userInput, AgentThread? thread = null)
     {
+        using var activity = TracingConfiguration.ActivitySource.StartActivity("agent.chat", ActivityKind.Client);
+        activity?.SetTag("gen_ai.system", "openai");
+        activity?.SetTag("gen_ai.operation.name", "chat");
+        activity?.SetTag("gen_ai.request.model", "gpt-4o");
+        activity?.SetTag("user.input", userInput.Length > 200 ? userInput[..200] + "..." : userInput);
+
+        var tokenCount = 0;
         await foreach (var update in _agent.RunStreamingAsync(userInput, thread))
         {
+            tokenCount += update.Text?.Length ?? 0;
             yield return update.Text;
         }
+
+        activity?.SetTag("gen_ai.response.finish_reason", "stop");
+        activity?.SetTag("response.characters", tokenCount);
     }
 
     /// <summary>
@@ -75,8 +87,18 @@ public class RoadmapAgentService
     /// </summary>
     public async Task<string> RunAsync(string userInput, AgentThread? thread = null)
     {
+        using var activity = TracingConfiguration.ActivitySource.StartActivity("agent.chat", ActivityKind.Client);
+        activity?.SetTag("gen_ai.system", "openai");
+        activity?.SetTag("gen_ai.operation.name", "chat");
+        activity?.SetTag("gen_ai.request.model", "gpt-4o");
+        activity?.SetTag("user.input", userInput.Length > 200 ? userInput[..200] + "..." : userInput);
+
         var response = await _agent.RunAsync(userInput, thread);
-        return response?.ToString() ?? string.Empty;
+        var result = response?.ToString() ?? string.Empty;
+
+        activity?.SetTag("gen_ai.response.finish_reason", "stop");
+        activity?.SetTag("response.characters", result.Length);
+        return result;
     }
 
     /// <summary>
