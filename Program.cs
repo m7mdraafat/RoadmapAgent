@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using LetopiaAgent.Configuration;
-using System;
 using Microsoft.Agents.AI;
 using System.Text;
 using System.Text.Json;
+using LetopiaAgent.Tests;
 
 // Build configuration
 var configuration = new ConfigurationBuilder()
@@ -211,7 +211,12 @@ static async Task<(CommandResult, AgentThread)> HandleCommand(string input, Road
             Console.WriteLine($"\n✅ Conversation exported to {jsonFileName}\n");
             Console.ResetColor();
             return (CommandResult.Handled, thread);
-
+        case "/test":
+            Console.Write("Enter number of concurrent requests (default 10): ");
+            var countInput = Console.ReadLine();
+            var count = int.TryParse(countInput, out var c) ? c : 10;
+            await ConcurrencyTest.RunTest(count);
+            return (CommandResult.Handled, thread);
         default:
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("❓ Unknown command. Type /help to see available commands.\n");

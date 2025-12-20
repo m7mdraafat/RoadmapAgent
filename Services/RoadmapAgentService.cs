@@ -5,15 +5,39 @@ using OpenAI;
 using LetopiaAgent.Configuration;
 using LetopiaAgent.Tools;
 using OpenAI.Chat;
+
 public class RoadmapAgentService
 {
     private readonly AIAgent _agent;
     private readonly string _systemPrompt;
+    private readonly WebSearchTools? _webSearchTools;
 
     public RoadmapAgentService(AgentSettings settings)
     {
         // Load system prompt from file
         _systemPrompt = LoadSystemPrompt();
+
+        // Initialize web search tools with Serper.dev API key
+        var tools = new List<AITool>();
+        
+        if (!string.IsNullOrEmpty(settings.SerperApiKey))
+        {
+            _webSearchTools = new WebSearchTools(settings.SerperApiKey);
+            tools.Add(AIFunctionFactory.Create(_webSearchTools.SearchResourceUrl));
+            tools.Add(AIFunctionFactory.Create(_webSearchTools.WebSearch));
+            tools.Add(AIFunctionFactory.Create(_webSearchTools.ValidateUrl));
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("🔍 Web Search enabled (Serper.dev - Google Search)");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("⚠️  Web Search disabled - Set SerperApiKey for verified URLs");
+            Console.WriteLine("   Run: dotnet user-secrets set \"AgentSettings:SerperApiKey\" \"YOUR_KEY\"");
+            Console.ResetColor();
+        }
 
         // Create OpenAI client pointing to GitHub Models
         var openAIClient = new OpenAIClient(
@@ -27,10 +51,11 @@ public class RoadmapAgentService
         // Get chat client for specific model
         var chatClient = openAIClient.GetChatClient(settings.ModelId);
 
-        // Create the agent with tools
+        // Create the agent with web search tools (if available)
         _agent = chatClient.CreateAIAgent(
             instructions: _systemPrompt,
-            name: "Letopia - Roadmap Agent"
+            name: "Letopia - Roadmap Agent",
+            tools: tools.Count > 0 ? tools : null
         );
     }
 
